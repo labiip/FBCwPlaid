@@ -1,5 +1,5 @@
 FBCwPlaid <- function(data_input, weight_input, iter.startup, 
-                      max.layers, iter.layer, iter.bin) {
+                      max.layers, iter.layer, iter.bin, back.num) {
   initial_dec <- function(data, side, iter.startup) {
     if (side == 1) {
       row_test <- try(kmeans(data, 2, iter.startup), TRUE)
@@ -340,7 +340,7 @@ drop_release_col <- function(data, row_fun, col_fun, iter.startup) {
   a <- data_input
   a <- as.matrix(a)
   a <- apply(a, 2, as.numeric)
-  mu_0 <- mean(a)
+  mu_0 <<- mean(a)
   data_temp <- a - mu_0
   Q <- sum(data_temp ^ 2)
   
@@ -430,7 +430,7 @@ drop_release_col <- function(data, row_fun, col_fun, iter.startup) {
         beta_rec[bi_num, ] <- beta_matrix[1, ]
         
         aaa_test <- backfitting(data = a, row_fun_dec = row_dec_rec, col_fun_dec = col_dec_rec,
-                                layer_num = bi_num, back_num = 1, mu_bk = mu_rec,
+                                layer_num = bi_num, back_num = back.num, mu_bk = mu_rec,
                                 row_eff = alpha_rec, col_eff = beta_rec)
         mu_rec <<- aaa_test$mu
         alpha_rec <<- aaa_test$row
