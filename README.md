@@ -9,7 +9,7 @@
 
 ## Preparation before using *FBCwPlaid*
 ### Data preparation ###
-As is known, MeRIP-seq data profiles the m<sup>6</sup>A epi-transcriptome by **input data** and **IP data**.Therefore, before using REW-ISA, it is required to prepare the required IP samples as well as input samples. According to the sample data of **IP** and **input**, the **methylation level** and **expression level** of m<sup>6</sup>A sites were calculated.
+As is known, MeRIP-seq data profiles the m<sup>6</sup>A epi-transcriptome by **input data** and **IP data**.Therefore, before using FBCwPlaid, it is required to prepare the required IP samples as well as input samples. According to the sample data of **IP** and **input**, the **methylation level** and **expression level** of m<sup>6</sup>A sites were calculated.
 
 Be careful, the two sets of data fed into *FBCwPlaid* should be **numerical matrices (or dataframe)**.
 
@@ -19,13 +19,13 @@ Be careful, the two sets of data fed into *FBCwPlaid* should be **numerical matr
 
 The operation of plaid should be set with the following input parameters.
 
-**data_input:** RNA methylation level.
+**Methylation.level:** RNA methylation level.
 
-**weight_input:** RNA expression level.
+**Expression.level:** RNA expression level.
 
 **max.layers:** The maximum number of patterns allowed to be found.
 
-**iter.startup:** The number of iterations of *k*-means.
+**kmeans.startup:** The number of iterations of *k*-means.
 
 **iter.layer:** The number of iterations to find each pattern.
 
@@ -37,8 +37,8 @@ The operation of plaid should be set with the following input parameters.
 
 Based on the above input, you can run *FBCwPlaid* with the following code:
 
-    bicluster <- FBCwPlaid(data_input = data, weight_input = weight, max.layers = 10, 
-    		       iter.startup = 3, iter.layer = 15, iter.bin = 5, back.num = 3)
+    bicluster <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
+    		       kmeans.startup = 3, iter.layer = 15, iter.bin = 5, back.num = 3)
 
 	# Output of FBCwPlaid parameter optimization result:
 	# bicluster: The final biclustering result. bicluster has a Biclust class that can be called by other functions, such as visualization using the drawHeatmap function in the R biclust package.
