@@ -1,6 +1,7 @@
 FBCwPlaid <- function(FPKM.IP, FPKM.input, Methylation.level, Expression.level, 
                       optimization, GENES.CORRES.SITES, GENE.ID.TYPES, exponent.num, 
-                      kmeans.startup, max.layers, iter.layer, iter.bin, verbose) {
+                      kmeans.startup, max.layers, iter.layer, iter.bin, backfitting.num, 
+                      verbose) {
   
   # Detect whether the data is missing. 
   if ((missing(FPKM.IP) || missing(FPKM.input))) {
@@ -569,9 +570,10 @@ FBCwPlaid <- function(FPKM.IP, FPKM.input, Methylation.level, Expression.level,
           alpha.rec[, bi_num] <- alpha_matrix[, 1]
           beta.rec[bi_num, ] <- beta_matrix[1, ]
           
-          back.test <- backfitting(data = a, row_fun_dec = row_dec_rec, col_fun_dec = col_dec_rec,
-                                  layer_num = bi_num, back_num = 3, mu_bk = mu.rec,
-                                  row_eff = alpha.rec, col_eff = beta.rec)
+          back.test <- backfitting(data = a, row_fun_dec = row_dec_rec, 
+                                   col_fun_dec = col_dec_rec, layer_num = bi_num, 
+                                   back_num = backfitting.num, mu_bk = mu.rec,
+                                   row_eff = alpha.rec, col_eff = beta.rec)
           if (!optimization) {
             mu.rec <<- back.test$mu
             alpha.rec <<- back.test$row
