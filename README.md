@@ -50,9 +50,11 @@ The operation of plaid should be set with the following input parameters.
 ***Note:** In general, it is unknown how many patterns there are in the data, so **max.layers** suggests setting it to a large number. Eventually, FBCwPlaid can automatically determine how many patterns are based on the decision conditions.*
 
 Based on the above input, you can run *FBCwPlaid* with the following code:
+1. Open the enrichment constraint module of FBCwPlaid:
 
     bicluster <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
-    		       kmeans.startup = 3, iter.layer = 15, iter.bin = 5, back.num = 3)
+		       optimization = TRUE, GENES.CORRES.SITES = gene_id, GENE.ID.TYPES = "ENTREZID", 
+    		       kmeans.startup = 3, iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
 
 	# Output of FBCwPlaid parameter optimization result:
 	# bicluster: The final biclustering result. bicluster has a Biclust class that can be called by other functions, such as visualization using the drawHeatmap function in the R biclust package.
