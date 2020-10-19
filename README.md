@@ -47,7 +47,7 @@ The operation of plaid should be set with the following input parameters.
 
 **verbose:** Logical variables. If TRUE, additional information about progress is printed.
 
-***Note:** In general, it is unknown how many bubbles there are in the data, so **max.layers** suggests setting it to a large number. Eventually, FBCwPlaid can automatically determine how many patterns are based on the decision conditions.*
+***Note:** In general, it is unknown how many patterns there are in the data, so **max.layers** suggests setting it to a large number. Eventually, FBCwPlaid can automatically determine how many patterns are based on the decision conditions.*
 
 Based on the above input, you can run *FBCwPlaid* with the following code:
 
