@@ -54,24 +54,24 @@ Based on the above input, you can run *FBCwPlaid* with the following code:
 #### 1. Open the enrichment constraint module of *FBCwPlaid*:
 
         exponent <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
-    		                  optimization = TRUE, GENES.CORRES.SITES = gene_id, GENE.ID.TYPES = "ENTREZID", 
-    		                  kmeans.startup = 3, iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
+    		              optimization = TRUE, GENES.CORRES.SITES = gene_id, GENE.ID.TYPES = "ENTREZID", 
+    		              kmeans.startup = 3, iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
         # Output of FBCwPlaid parameter optimization result:
-		# exponent: The best choice of exponential power. 
+	# exponent: The best choice of exponential power. 
 
 	
 #### 2. Running *FBCwPlaid* under the best exponential power obtained, a series of patterns are obtained:
 
         bicluster <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
-    		                   optimization = FALSE, exponent.num = exponent, kmeans.startup = 3, 
-							   iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
+    		               optimization = FALSE, exponent.num = exponent, kmeans.startup = 3, 
+			       iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
         # Output items for running FBCwPlaid:
-	    # bicluster: The final biclustering result. bicluster has a biclust class that can be called by other functions, such as visualization using the *drawHeatmap* function in the R biclust package.
-		# mu.all: The background of the overall data.
-		# mu.rec: The background value of each pattern.
-		# alpha.rec: The alpha value corresponding to the sites in each pattern.
-		# beta.rec: The beta value corresponding to the conditions in each pattern.
-		# CPS.rec: Significant CPS value of each pattern.
+	# bicluster: The final biclustering result. bicluster has a biclust class that can be called by other functions, such as visualization using the *drawHeatmap* function in the R biclust package.
+	# mu.all: The background of the overall data.
+	# mu.rec: The background value of each pattern.
+	# alpha.rec: The alpha value corresponding to the sites in each pattern.
+	# beta.rec: The beta value corresponding to the conditions in each pattern.
+	# CPS.rec: Significant CPS value of each pattern.
 
 
 
