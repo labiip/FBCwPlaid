@@ -19,19 +19,33 @@ Be careful, the two sets of data fed into *FBCwPlaid* should be **numerical matr
 
 The operation of plaid should be set with the following input parameters.
 
+**FPKM.IP:** IP sample data.
+
+**FPKM.input:** input sample data.
+
 **Methylation.level:** RNA methylation level.
 
 **Expression.level:** RNA expression level.
 
-**max.layers:** The maximum number of patterns allowed to be found.
+**optimization:** Logical variables. If TRUE, the enrichment constraint module is enabled.
+
+**GENES.CORRES.SITES,:** The gene corresponding to each m<sup>6</sup>A site.
+
+**GENE.ID.TYPES:** The type of gene ID in GENES.CORRES.SITES. Four types are supported: "ENTREZID", "SYMBOL", "ENSEMBL" and "GENENAME".
+
+**exponent.num:** The value of exponential power obtained by enrichment constraint.
 
 **kmeans.startup:** The number of iterations of *k*-means.
+
+**max.layers:** The maximum number of patterns allowed to be found.
 
 **iter.layer:** The number of iterations to find each pattern.
 
 **iter.bin:** The number of iterative searches in binary.
 
-**back.num:** The number of times of back fitting.
+**backfitting.num:** The number of times of back fitting.
+
+**verbose:** Logical variables. If TRUE, additional information about progress is printed.
 
 ***Note:** In general, it is unknown how many bubbles there are in the data, so **max.layers** suggests setting it to a large number. Eventually, FBCwPlaid can automatically determine how many patterns are based on the decision conditions.*
 
