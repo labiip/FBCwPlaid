@@ -1,5 +1,5 @@
 # The *FBCwPlaid* user's guide #
-2020/07/03 9:25:27  
+2020/10/19 9:11:34   
 
 ## Function description ##
 ***FBCwPlaid*: A Functional Bi-clustering Analysis of Epi-transcriptome Profiling Data via a Weighted Plaid Model**
@@ -50,19 +50,28 @@ The operation of plaid should be set with the following input parameters.
 ***Note:** In general, it is unknown how many patterns there are in the data, so **max.layers** suggests setting it to a large number. Eventually, FBCwPlaid can automatically determine how many patterns are based on the decision conditions.*
 
 Based on the above input, you can run *FBCwPlaid* with the following code:
-1. Open the enrichment constraint module of FBCwPlaid:
 
-    bicluster <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
-		       optimization = TRUE, GENES.CORRES.SITES = gene_id, GENE.ID.TYPES = "ENTREZID", 
-    		       kmeans.startup = 3, iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
+#### 1. Open the enrichment constraint module of *FBCwPlaid*:
 
-	# Output of FBCwPlaid parameter optimization result:
-	# bicluster: The final biclustering result. bicluster has a Biclust class that can be called by other functions, such as visualization using the drawHeatmap function in the R biclust package.
-	# CPS_rec: Significant CPS value of each pattern.
-	# alpha_rec: The alpha value corresponding to the sites in each pattern.
-	# beta_rec: The beta value corresponding to the conditions in each pattern.
-	# mu_rec: The background value of each pattern.
-    # mu_0: The background of the overall data.
+        exponent <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
+    		                  optimization = TRUE, GENES.CORRES.SITES = gene_id, GENE.ID.TYPES = "ENTREZID", 
+    		                  kmeans.startup = 3, iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
+        # Output of FBCwPlaid parameter optimization result:
+		# exponent: The best choice of exponential power. 
+
+	
+#### 2. Running *FBCwPlaid* under the best exponential power obtained, a series of patterns are obtained:
+
+        bicluster <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
+    		                   optimization = FALSE, exponent.num = exponent, kmeans.startup = 3, 
+							   iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
+        # Output items for running FBCwPlaid:
+	    # bicluster: The final biclustering result. bicluster has a biclust class that can be called by other functions, such as visualization using the *drawHeatmap* function in the R biclust package.
+		# mu.all: The background of the overall data.
+		# mu.rec: The background value of each pattern.
+		# alpha.rec: The alpha value corresponding to the sites in each pattern.
+		# beta.rec: The beta value corresponding to the conditions in each pattern.
+		# CPS.rec: Significant CPS value of each pattern.
 
 
 
