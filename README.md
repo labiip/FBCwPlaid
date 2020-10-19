@@ -54,10 +54,10 @@ Based on the above input, you can run *FBCwPlaid* with the following code:
 #### 1. Open the enrichment constraint module of *FBCwPlaid*:
 
         exponent <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
-    		            optimization = TRUE, GENES.CORRES.SITES = gene_id, GENE.ID.TYPES = "ENTREZID", 
-    		            kmeans.startup = 3, iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
+    		        optimization = TRUE, GENES.CORRES.SITES = gene_id, GENE.ID.TYPES = "ENTREZID", 
+    		        kmeans.startup = 3, iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
         # Output of FBCwPlaid parameter optimization result:
-	  # exponent: The best choice of exponential power. 
+	      # exponent: The best choice of exponential power. 
 
 	
 #### 2. Running *FBCwPlaid* under the best exponential power obtained, a series of patterns are obtained:
