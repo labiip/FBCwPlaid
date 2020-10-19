@@ -63,8 +63,8 @@ Based on the above input, you can run *FBCwPlaid* with the following code:
 #### 2. Running *FBCwPlaid* under the best exponential power obtained, a series of patterns are obtained:
 
         bicluster <- FBCwPlaid(Methylation.level = data, Expression.level = weight, max.layers = 10, 
-    		               optimization = FALSE, exponent.num = exponent, kmeans.startup = 3, 
-			       iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
+    		           optimization = FALSE, exponent.num = exponent, kmeans.startup = 3, 
+			           iter.layer = 20, iter.bin = 10, backfitting.num = 3, verbose = "FALSE")
         # Output items for running FBCwPlaid:
 	# bicluster: The final biclustering result. bicluster has a biclust class that can be called by other functions, such as visualization using the *drawHeatmap* function in the R biclust package.
 	# mu.all: The background of the overall data.
