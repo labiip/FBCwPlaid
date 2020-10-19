@@ -6,7 +6,7 @@
 
 *FBCwPlaid*  based on Lagrange multiplier method  to discover the potential functional patterns. The model seeks for one bi-cluster each time. Thus, the goal of each time turns into a binary classification problem. It initializes model parameters by *k*-means clustering, and then updates the parameters of the Plaid model. To address the issue that site expression level determines methylation level confidence, it uses RNA expression levels of each site as weights to make lower expressed sites less confident. *FBCwPlaid* also allows overlapping bi-clusters, indicating some sites may participate in multiple biological functions.
 
-***FBCwPlaid currently only supports function calls, and the subsequent FBCwPlaid will be encapsulated in the form of R package.**
+***FBCwPlaid currently only supports function calls, and the subsequent FBCwPlaid will be encapsulated in the form of R package.***
 
 ## Preparation before using *FBCwPlaid*
 ### Data preparation ###
