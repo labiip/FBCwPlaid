@@ -704,14 +704,13 @@ FBCwPlaid <- function(FPKM.IP, FPKM.input, Methylation.level, Expression.level,
           go.result <- matrix(nrow = nrow(go@result), ncol = 2)
           go.result[, 1] <- go@result[, 10]
           go.result[, 2] <- as.numeric(go@result[, 6])
-          temp.count <- go.result[1, 1]
-          temp.ratio <- go@result[1, 4]
-          temp.ratio <- eval(parse(text = temp.ratio))
-          not.included.num <- length(gene.temp) - (temp.count / temp.ratio)
+          gene.get <- go@result[, 9]
+          gene.get <- paste(gene.get[1:length(gene.get)], collapse = "/")
+          gene.use.num <- length(unique(unlist(strsplit(gene.get, "[/]"))))
           go.result[, 1] <- go.result[, 1] / length(gene.temp)
           go.result[, 2] <- -log(go.result[, 2], 10)
           denominator <- (apply(go.result, 2, sum))[1]
-          denominator <- denominator + (not.included.num / length (gene.temp))
+          denominator <- denominator + (length(gene.temp) - not.included.num / length (gene.temp))
           molecule <- sum(go.result[, 1] * go.result[, 2])
           we.power[var.enrich] <- molecule / denominator
         }
