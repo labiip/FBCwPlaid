@@ -695,9 +695,8 @@ FBCwPlaid <- function(FPKM.IP, FPKM.input, Methylation.level, Expression.level,
         gene.temp <- na.omit(gene.temp) 
         gene.temp <- as.character(as.vector(gene.temp))
         # Gene ontology analysis. 
-        go <- enrichGO(gene.temp, "org.Hs.eg.db", ont = "ALL", 
-                       pAdjustMethod = "BH", pvalueCutoff = 0.05, 
-                       qvalueCutoff = 0.2, keyType = GENE.ID.TYPES, readable = TRUE)
+        go <- enrichGO(gene.temp, "org.Hs.eg.db", ont = "ALL", pAdjustMethod = "BH",
+                       pvalueCutoff = 0.05, qvalueCutoff = 0.2, keyType = GENE.ID.TYPES, readable = TRUE)
         if (nrow(go@result) == 0) {
           we.power[var.enrich] <- 0
         } else {
