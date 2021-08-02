@@ -709,7 +709,7 @@ FBCwPlaid <- function(FPKM.IP, FPKM.input, Methylation.level, Expression.level,
           go.result[, 1] <- go.result[, 1] / length(gene.temp)
           go.result[, 2] <- -log(go.result[, 2], 10)
           denominator <- (apply(go.result, 2, sum))[1]
-          denominator <- denominator + (length(gene.temp) - not.included.num / length (gene.temp))
+          denominator <- denominator + (length(gene.temp) - gene.use.num / length (gene.temp))
           molecule <- sum(go.result[, 1] * go.result[, 2])
           we.power[var.enrich] <- molecule / denominator
         }
